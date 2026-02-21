@@ -12,6 +12,8 @@
     gnumake
     cmake
     just
+    jdk21
+    maven
 
     # cli tools
     bat
@@ -23,6 +25,9 @@
     xq
     uv
     ruff
+    glow
+    gitui
+    fzf
 
     # productivity
     wl-clipboard
@@ -34,6 +39,10 @@
     duckdb
     thunderbird
     jetbrains.idea
+    vlc
+    gimp
+    discord
+
 
     # perf
     gdb
@@ -41,6 +50,7 @@
     btop
     htop
     glances
+
 
     # network
     tcpdump
