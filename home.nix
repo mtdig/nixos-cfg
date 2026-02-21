@@ -14,10 +14,16 @@
       if ! command -v rustc &>/dev/null; then
         echo -e "\e[1;31m⚠ Rust is not installed! Run: rustup toolchain install stable\e[0m"
       fi
+      shopt -s histappend
+      export GTK_IM_MODULE=simple
+      bind '"\e[A": history-search-backward'
+      bind '"\e[B": history-search-forward'
+      PROMPT_COMMAND="history -a; history -n; ''${PROMPT_COMMAND}"
     '';
     shellAliases = {
       hconf = "nvim /home/jeroen/.config/home-manager/home.nix";
-      hswitch = "home-manager switch";
+      gconfg = "sudo nvim /etc/nixos/configuration.nix";
+      hswitch = "home-manager switch --flake /etc/nixos#jeroen";
       gswitch = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       sudo = "sudo ";
       vi = "nvim ";
@@ -97,10 +103,9 @@
     
     window-save-state = always
     background-opacity = 0.95
+    keybind = alt+equal=text:~
+
   '';
 
 
-  home.sessionVariables = {
-    GTK_IM_MODULE = "simple";
-  };
 }

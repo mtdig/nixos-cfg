@@ -74,7 +74,7 @@
   users.users.jeroen = {
     isNormalUser = true;
     description = "jeroen";
-    extraGroups = [ "networkmanager" "wheel" "virtualbox"];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers"];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -94,25 +94,26 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  # moved this to packages.nix
+  #  environment.systemPackages = with pkgs; [
+  #  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  #  wget
+  #  clang
+  #  curl
+  #  fastfetch
+  #  ghostty
+  #  git
+  #  go
+  #  google-chrome
+  #  home-manager
+  #  jq
+  #  neovim
+  #  ninja
+  #  rustup
+  #  vscode
   #  wget
-  clang
-  curl
-  fastfetch
-  ghostty
-  git
-  go
-  google-chrome
-  home-manager
-  jq
-  neovim
-  ninja
-  rustup
-  vscode
-  wget
-  xq
-  ];
+  #  xq
+  #  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
