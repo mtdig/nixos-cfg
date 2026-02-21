@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-master, ... }:
+{ config, pkgs, pkgs-virtualbox-726, ... }:
 
 {
   imports =
@@ -86,7 +86,7 @@
  
   virtualisation.virtualbox.host = {
     enable = true;
-    package = pkgs-master.virtualbox;
+    package = pkgs-virtualbox-726.virtualbox;
   };
 
   # Install firefox.

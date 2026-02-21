@@ -19,6 +19,7 @@
       bind '"\e[A": history-search-backward'
       bind '"\e[B": history-search-forward'
       PROMPT_COMMAND="history -a; history -n; ''${PROMPT_COMMAND}"
+      export PATH="/home/jeroen/local/bin:$PATH";
     '';
     shellAliases = {
       hconf = "nvim /home/jeroen/.config/home-manager/home.nix";
@@ -28,6 +29,9 @@
       gswitch = "sudo nixos-rebuild switch --flake /etc/nixos#\$(hostname)";
       sudo = "sudo ";
       vi = "nvim ";
+      gnpch = "get-nix-pkg-commit-hash ";
+      flake = "sudo nvim /etc/nixos/flake.nix";
+      flup = "sudo nix flake update --flake /etc/nixos";
 
     };
   };

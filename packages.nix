@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # dev
+    gcc
     clang
     go
     ninja
@@ -13,6 +14,7 @@
     just
 
     # cli tools
+    bat
     fastfetch
     curl
     git
@@ -31,6 +33,7 @@
     home-manager
     duckdb
     thunderbird
+    jetbrains.idea
 
     # perf
     gdb
@@ -49,6 +52,10 @@
     awscli2
     terraform
     ibmcloud-cli
+
+    # exoticness
+    (pkgs.callPackage ./pkgs/visual-paradigm.nix {})
+
 
   ];
 }
