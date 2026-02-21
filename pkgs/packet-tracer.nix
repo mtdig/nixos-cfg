@@ -4,7 +4,7 @@ stdenv.mkDerivation rec {
   pname = "packet-tracer";
   version = "9.0";
 
-  src = /home/jeroen/Downloads/CiscoPacketTracer_900_Ubuntu_64bit.deb;
+  src = /opt/soft/CiscoPacketTracer_900_Ubuntu_64bit.deb;
 
   nativeBuildInputs = [ autoPatchelfHook makeWrapper dpkg ];
 
