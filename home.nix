@@ -92,7 +92,7 @@
     font-family = JetBrains Mono
     theme = Dracula
     mouse-hide-while-typing = true
-    scrollback-limit = 1000000
+    scrollback-limit = 100000000
     gtk-single-instance = false
 
     
