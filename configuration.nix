@@ -50,6 +50,7 @@
   # Configure console keymap
   console.keyMap = "be-latin1";
   environment.variables.XKB_DEFAULT_LAYOUT = "be";
+  environment.variables.GTK_IM_MODULE = "simple";
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

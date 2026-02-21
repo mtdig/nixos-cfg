@@ -15,7 +15,6 @@
         echo -e "\e[1;31m⚠ Rust is not installed! Run: rustup toolchain install stable\e[0m"
       fi
       shopt -s histappend
-      export GTK_IM_MODULE=simple
       bind '"\e[A": history-search-backward'
       bind '"\e[B": history-search-forward'
       PROMPT_COMMAND="history -a; history -n; ''${PROMPT_COMMAND}"
