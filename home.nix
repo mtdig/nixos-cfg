@@ -22,9 +22,10 @@
     '';
     shellAliases = {
       hconf = "nvim /home/jeroen/.config/home-manager/home.nix";
-      gconfg = "sudo nvim /etc/nixos/configuration.nix";
-      hswitch = "home-manager switch --flake /etc/nixos#jeroen";
-      gswitch = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
+      gconf = "sudo nvim /etc/nixos/configuration.nix";
+      gpac = "sudo nvim /etc/nixos/packages.nix";
+      hswitch = "home-manager switch --flake /etc/nixos#\${USER}";
+      gswitch = "sudo nixos-rebuild switch --flake /etc/nixos#\$(hostname)";
       sudo = "sudo ";
       vi = "nvim ";
 
@@ -35,6 +36,9 @@
     enable = true;
     settings.user.name = "jeroen";
     settings.user.email = "jeroen.vanrenterghem@student.hogent.be";
+    settings = {
+      init.defaultBranch = "main";
+    };
   };
 
   home.file.".config/nvim/lua/keymaps.lua".text = ''
@@ -69,11 +73,14 @@
     vim.opt.termguicolors = true
     vim.opt.scrolloff = 8
     vim.opt.updatetime = 50
+    vim.opt.clipboard = "unnamedplus"
+
   '';
 
   home.file.".config/nvim/init.lua".text = ''
     require("keymaps")
     require("options")
+
   '';
 
   home.file.".config/ghostty/config".text = ''
@@ -82,6 +89,8 @@
     theme = Dracula
     mouse-hide-while-typing = true
     scrollback-limit = 1000000
+    gtk-single-instance = false
+
     
     keybind = ctrl+n=new_window
     
@@ -103,7 +112,6 @@
     
     window-save-state = always
     background-opacity = 0.95
-    keybind = alt+equal=text:~
 
   '';
 

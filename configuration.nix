@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./packages.nix
+      ./rust.nix
     ];
 
   # Bootloader.
@@ -43,11 +44,12 @@
   services.xserver.xkb = {
     layout = "be";
     variant = "";
+    model = "pc105";
   };
 
   # Configure console keymap
   console.keyMap = "be-latin1";
-
+  environment.variables.XKB_DEFAULT_LAYOUT = "be";
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -74,20 +76,21 @@
   users.users.jeroen = {
     isNormalUser = true;
     description = "jeroen";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers"];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker"];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
     ];
   };
-  
+  virtualisation.docker.enable = true;
+ 
   virtualisation.virtualbox.host = {
     enable = true;
     package = pkgs-master.virtualbox;
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
