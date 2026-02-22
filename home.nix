@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.username = "jeroen";
@@ -31,7 +31,66 @@
       gnpch = "get-nix-pkg-commit-hash ";
       flake = "sudo nvim /etc/nixos/flake.nix";
       flup = "sudo nix flake update --flake /etc/nixos";
+      nxs = "nix search nixpkgs ";
+      flist = "nix-store -q --references /run/current-system/sw | sed 's/\\/nix\\/store\\/[a-z0-9]*-//' | sort";
 
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    settings = {
+      add_newline = true;
+  
+      format = lib.concatStrings [
+        "$directory"
+        "$git_branch"
+        "$git_status"
+        "$rust"
+        "$c"
+        "$golang"
+        "$python"
+        "$lua"
+        "$java"
+        "$maven"
+        "$docker_context"
+        "$nix_shell"
+        "$line_break"
+        "$character"
+      ];
+
+  
+      directory = {
+        truncation_length = 3;
+        truncate_to_repo = true;
+      };
+  
+      git_branch = {
+        symbol = " ";
+        format = "[$symbol$branch]($style) ";
+      };
+      git_status = {
+        format = "([$all_status$ahead_behind]($style) )";
+        ahead = "⇡\${count}";
+        behind = "⇣\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        staged = "+\${count}";
+        modified = "!\${count}";
+        untracked = "?\${count}";
+        deleted = "✘\${count}";
+      };
+  
+  
+      nix_shell = {
+        symbol = " ";
+        format = "[$symbol$state]($style) ";
+      };
+  
+      character = {
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[❯](bold red)";
+      };
     };
   };
 

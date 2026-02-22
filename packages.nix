@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # dev
+    file
     gcc
     clang
     go
@@ -28,6 +29,15 @@
     glow
     gitui
     fzf
+    git-cliff
+    starship
+    tree
+    ncdu
+    navi
+    ripgrep
+    unzip
+    zip
+
 
     # productivity
     wl-clipboard
@@ -42,6 +52,8 @@
     vlc
     gimp
     discord
+    mysql-workbench
+    dbeaver-bin
 
 
     # perf
@@ -51,9 +63,23 @@
     htop
     glances
 
+    # hw / sys
+    usbutils
+    pciutils
+    rsync
+    lsof
+    util-linux
+    procps
+
 
     # network
     tcpdump
+    inetutils
+    dig
+    nmap
+    nettools
+    iproute2
+
 
     # cloud
     kubectl
