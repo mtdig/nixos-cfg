@@ -4,7 +4,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
-    userSettings = {
+    profiles.default.userSettings = {
       "git.confirmSync" = false;
       "git.autofetch" = true;
       "github.copilot.nextEditSuggestions.enabled" = true;
