@@ -15,6 +15,8 @@
     just
     jdk21
     maven
+    xxd
+
 
     # cli tools
     bat
@@ -37,6 +39,8 @@
     ripgrep
     unzip
     zip
+    wp-cli
+
 
 
     # productivity
@@ -52,6 +56,12 @@
     discord
     mysql-workbench
     dbeaver-bin
+    slack
+    scenebuilder
+    rpi-imager
+    obs-studio
+    kicad
+
 
 
     # perf
@@ -100,6 +110,10 @@
     # exoticness
     (pkgs.callPackage ./pkgs/visual-paradigm.nix {})
     (pkgs.callPackage ./pkgs/packet-tracer.nix {})
+
+    # 3d printing
+    (pkgs.callPackage ./pkgs/bambu-studio-appimage.nix {})
+    openscad-unstable
 
     # user
     nerd-fonts.jetbrains-mono

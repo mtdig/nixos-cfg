@@ -14,4 +14,5 @@ Keeping both system wide config and my user config together.  Not ideal, but it'
 - [x] add neovim config -> switch to nixvim (lazyvim issues)
 - [x] can't remove hardware-configuration.nix from git, needs to be tracked (regenerate and overwrite with `nixos-generate-config --force`)
 - [x] vscode minimal config
+- [ ] add bambu studio as appimage, issue [nixpkgs#440951](https://github.com/nixos/nixpkgs/issues/440951)
 
