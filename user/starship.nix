@@ -52,16 +52,16 @@
         };
 
         format = lib.concatStrings [
-          "[](surface1)"
+          "[█](surface1)"
           "$os"
           "[](bg:surface2 fg:surface1)"
           "$username"
           "$sudo"
-          "[](bg:overlay0 fg:surface2)"
+          "[](bg:overlay0 fg:surface2)"
           "$hostname"
-          "[](bg:mauve fg:overlay0)"
+          "[](bg:mauve fg:overlay0)"
           "$directory"
-          "[](fg:mauve bg:peach)"
+          "[](fg:mauve bg:peach)"
           "$c"
           "$dart"
           "$dotnet"
@@ -88,9 +88,9 @@
           "$zig"
           "$package"
           "$git_branch"
-          "[](fg:peach bg:yellow)"
+          "[](fg:peach bg:yellow)"
           "$git_status"
-          "[](fg:yellow bg:teal)"
+          "[](fg:yellow bg:teal)"
           "$container"
           "$direnv"
           "$nix_shell"
@@ -398,18 +398,18 @@
           map_symbol = true;
           pipestatus = false;
           style = "";
-          symbol = "[](fg:teal bg:pink)[  $status](fg:red bg:pink)";
-          success_symbol = "[](fg:teal bg:blue)";
-          not_executable_symbol = "[](fg:teal bg:pink)[  $common_meaning](fg:red bg:pink)";
-          not_found_symbol = "[](fg:teal bg:pink)[ 󰩌 $common_meaning](fg:red bg:pink)";
-          sigint_symbol = "[](fg:teal bg:pink)[  $signal_name](fg:red bg:pink)";
-          signal_symbol = "[](fg:teal bg:pink)[ ⚡ $signal_name](fg:red bg:pink)";
+          symbol = "[](fg:teal bg:pink)[  $status](fg:red bg:pink)";
+          success_symbol = "[](fg:teal bg:blue)";
+          not_executable_symbol = "[](fg:teal bg:pink)[  $common_meaning](fg:red bg:pink)";
+          not_found_symbol = "[](fg:teal bg:pink)[ 󰩌 $common_meaning](fg:red bg:pink)";
+          sigint_symbol = "[](fg:teal bg:pink)[  $signal_name](fg:red bg:pink)";
+          signal_symbol = "[](fg:teal bg:pink)[ ⚡ $signal_name](fg:red bg:pink)";
         };
         character = {
           disabled = false;
           format = "$symbol";
-          error_symbol = "(fg:red bg:pink)[](fg:pink) ";
-          success_symbol = "[](fg:blue) ";
+          error_symbol = "(fg:red bg:pink)[](fg:pink) ";
+          success_symbol = "[](fg:blue) ";
         };
       };
     };
