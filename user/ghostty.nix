@@ -30,6 +30,7 @@
     
     window-save-state = always
     background-opacity = 0.95
+    maximize = true
 
   '';
 }
