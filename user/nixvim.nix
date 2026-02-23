@@ -96,6 +96,9 @@
       { mode = "n"; key = "<leader>h2"; action.__raw = "function() require('harpoon'):list():select(2) end"; options.desc = "Harpoon file 2"; }
       { mode = "n"; key = "<leader>h3"; action.__raw = "function() require('harpoon'):list():select(3) end"; options.desc = "Harpoon file 3"; }
       { mode = "n"; key = "<leader>h4"; action.__raw = "function() require('harpoon'):list():select(4) end"; options.desc = "Harpoon file 4"; }
+
+      # toggle word wrap
+      { mode = "n"; key = "<leader>w"; action = "<cmd>set wrap!<cr>"; options.desc = "Toggle word wrap"; }
     ];
 
     # ── Plugins ─────────────────────────────────────────────────────
