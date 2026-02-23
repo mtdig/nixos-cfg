@@ -15,8 +15,12 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-esp-dev = {
+      url = "github:mirrexagon/nixpkgs-esp-dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, nixpkgs-virtualbox-726, home-manager, rust-overlay, nixvim, ... }:
+  outputs = { self, nixpkgs, nixpkgs-virtualbox-726, home-manager, rust-overlay, nixvim, nixpkgs-esp-dev, ... }:
   let
     system = "x86_64-linux";
   in {
@@ -24,6 +28,7 @@
       inherit system;
       specialArgs = {
         pkgs-virtualbox-726 = nixpkgs-virtualbox-726.legacyPackages.${system};
+        pkgs-esp-idf = nixpkgs-esp-dev.packages.${system};
       };
       modules = [
         ({ pkgs, ... }: { nixpkgs.overlays = [ rust-overlay.overlays.default ]; })

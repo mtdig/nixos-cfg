@@ -81,7 +81,7 @@
   users.users.jeroen = {
     isNormalUser = true;
     description = "jeroen";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker" "libvirtd" "dialout" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -113,6 +113,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # ESP-IDF requires python-ecdsa which is marked insecure
+  nixpkgs.config.permittedInsecurePackages = [
+    "python3.13-ecdsa-0.19.1"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
