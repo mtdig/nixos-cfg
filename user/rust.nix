@@ -5,6 +5,7 @@ let
     targets = [
       "x86_64-unknown-linux-gnu"
       "aarch64-unknown-linux-gnu"
+      "aarch64-unknown-linux-musl"
       "riscv32imc-unknown-none-elf"  # ESP32-C3
       "riscv32imac-unknown-none-elf" # ESP32-C6
     ];
@@ -14,6 +15,8 @@ in {
     # Rust toolchain with ESP RISC-V targets
     rustToolchain
     gcc
+
+    # aarch64 (Raspberry Pi) cross-compilation support
     pkgsCross.aarch64-multiplatform.stdenv.cc
 
     # ESP-IDF (C/C++ framework) - includes toolchains for C3 and C6
@@ -28,6 +31,9 @@ in {
     ldproxy            # linker proxy for esp-idf-sys builds
     probe-rs-tools     # on-chip debugging & flashing
   ];
+
+  # Set cross-linker for aarch64 Rust builds
+  environment.variables.CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER = "aarch64-unknown-linux-gnu-gcc";
 
   # udev rules for Espressif USB JTAG/serial devices
   services.udev.extraRules = ''
