@@ -43,7 +43,6 @@
     wl-clipboard
     google-chrome
     ghostty
-    vscode
     home-manager
     duckdb
     thunderbird

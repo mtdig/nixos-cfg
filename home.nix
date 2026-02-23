@@ -2,8 +2,11 @@
 
 {
   imports = [
-    ./starship.nix
-    ./nixvim.nix
+    ./user/starship.nix
+    ./user/nixvim.nix
+    ./user/git.nix
+    ./user/ghostty.nix
+    ./user/vscode.nix
   ];
 
   home.username = "jeroen";
@@ -41,110 +44,5 @@
 
     };
   };
-
-#  programs.starship = {
-#    enable = true;
-#    enableBashIntegration = true;
-#    settings = {
-#      add_newline = true;
-#  
-#      format = lib.concatStrings [
-#        "$directory"
-#        "$git_branch"
-#        "$git_status"
-#        "$rust"
-#        "$c"
-#        "$golang"
-#        "$python"
-#        "$lua"
-#        "$java"
-#        "$maven"
-#        "$docker_context"
-#        "$nix_shell"
-#        "$line_break"
-#        "$character"
-#      ];
-#
-#  
-#      directory = {
-#        truncation_length = 3;
-#        truncate_to_repo = true;
-#      };
-#  
-#      git_branch = {
-#        symbol = " ";
-#        format = "[$symbol$branch]($style) ";
-#      };
-#      git_status = {
-#        format = "([$all_status$ahead_behind]($style) )";
-#        ahead = "⇡\${count}";
-#        behind = "⇣\${count}";
-#        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-#        staged = "+\${count}";
-#        modified = "!\${count}";
-#        untracked = "?\${count}";
-#        deleted = "✘\${count}";
-#      };
-#  
-#  
-#      nix_shell = {
-#        symbol = " ";
-#        format = "[$symbol$state]($style) ";
-#      };
-#  
-#      character = {
-#        success_symbol = "[❯](bold green)";
-#        error_symbol = "[❯](bold red)";
-#      };
-#    };
-#  };
-
-  programs.git = {
-    enable = true;
-    settings.user.name = "jeroen";
-    settings.user.email = "jeroen.vanrenterghem@student.hogent.be";
-    settings = {
-      init.defaultBranch = "main";
-      core.ignorecase = "false";
-      rebase.autoStash = "true";
-      pull.rebase = "true";
-      # windows only
-      # core.autocrlf = "true";
-      push.default = "simple";
-    };
-  };
-
-  home.file.".config/ghostty/config".text = ''
-    shell-integration = bash 
-    font-family = JetBrainsMono Nerd Font
-    theme = Dracula
-    mouse-hide-while-typing = true
-    scrollback-limit = 100000000
-    gtk-single-instance = false
-
-    
-    keybind = ctrl+n=new_window
-    
-    keybind = ctrl+h=goto_split:left
-    keybind = ctrl+j=goto_split:bottom
-    keybind = ctrl+k=goto_split:top
-    keybind = ctrl+l=goto_split:right
-    
-    keybind = ctrl+a>h=new_split:left
-    keybind = ctrl+a>j=new_split:down
-    keybind = ctrl+a>k=new_split:up
-    keybind = ctrl+a>l=new_split:right
-    keybind = ctrl+a>f=toggle_split_zoom
-    
-    keybind = ctrl+a>n=next_tab
-    keybind = ctrl+a>p=previous_tab
-    
-    keybind = super+r=reload_config
-    
-    window-save-state = always
-    background-opacity = 0.95
-
-  '';
-
 
 }

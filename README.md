@@ -12,5 +12,6 @@ Keeping both system wide config and my user config together.  Not ideal, but it'
 - [x] pinned virtualbox (flakes, not channels)
 - [x] add starship (not happy with theme yet)
 - [x] add neovim config -> switch to nixvim (lazyvim issues)
-- [x] remove hardware-configuration.nix from git (`nixos-generate-config --force`)
+- [x] can't remove hardware-configuration.nix from git, needs to be tracked (regenerate and overwrite with `nixos-generate-config --force`)
+- [x] vscode minimal config
 
