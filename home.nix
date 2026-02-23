@@ -156,7 +156,7 @@
 
   home.file.".config/ghostty/config".text = ''
     shell-integration = bash 
-    font-family = JetBrains Mono
+    font-family = JetBrainsMono Nerd Font
     theme = Dracula
     mouse-hide-while-typing = true
     scrollback-limit = 100000000

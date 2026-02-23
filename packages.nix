@@ -98,6 +98,9 @@
     (pkgs.callPackage ./pkgs/visual-paradigm.nix {})
     (pkgs.callPackage ./pkgs/packet-tracer.nix {})
 
+    # user
+    nerd-fonts.jetbrains-mono
+
 
 
   ];

@@ -4,7 +4,7 @@
   ...
 }:
 {
-  catppuccin.starship.enable = config.programs.starship.enable;
+  # catppuccin.starship.enable = config.programs.starship.enable;
 
   programs = {
     starship = {
@@ -19,6 +19,38 @@
         time = {
           disabled = true;
         };
+
+        palette = "catppuccin_mocha";
+      
+        palettes.catppuccin_mocha = {
+          rosewater = "#f5e0dc";
+          flamingo = "#f2cdcd";
+          pink = "#f5c2e7";
+          mauve = "#cba6f7";
+          red = "#f38ba8";
+          maroon = "#eba0ac";
+          peach = "#fab387";
+          yellow = "#f9e2af";
+          green = "#a6e3a1";
+          teal = "#94e2d5";
+          sky = "#89dceb";
+          sapphire = "#74c7ec";
+          blue = "#89b4fa";
+          lavender = "#b4befe";
+          text = "#cdd6f4";
+          subtext1 = "#bac2de";
+          subtext0 = "#a6adc8";
+          overlay2 = "#9399b2";
+          overlay1 = "#7f849c";
+          overlay0 = "#6c7086";
+          surface2 = "#585b70";
+          surface1 = "#45475a";
+          surface0 = "#313244";
+          base = "#1e1e2e";
+          mantle = "#181825";
+          crust = "#11111b";
+        };
+
         format = lib.concatStrings [
           "[](surface1)"
           "$os"
@@ -142,7 +174,8 @@
           read_only = " 󰈈";
           read_only_style = "bold fg:crust bg:mauve";
           style = "fg:base bg:mauve";
-          truncation_length = 3;
+          truncation_length = 100;
+          truncate_to_repo = false;
           truncation_symbol = "…/";
         };
         # Shorten long paths by text replacement. Order matters
