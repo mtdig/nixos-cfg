@@ -11,8 +11,12 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, nixpkgs-virtualbox-726, home-manager, rust-overlay, ... }:
+  outputs = { self, nixpkgs, nixpkgs-virtualbox-726, home-manager, rust-overlay, nixvim, ... }:
   let
     system = "x86_64-linux";
   in {
@@ -28,7 +32,10 @@
     };
     homeConfigurations.jeroen = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home.nix ];
+      modules = [
+        nixvim.homeModules.nixvim
+        ./home.nix
+      ];
     };
   };
 }

@@ -41,7 +41,6 @@
 
     # productivity
     wl-clipboard
-    neovim
     google-chrome
     ghostty
     vscode
