@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./starship.nix
+  ];
+
   home.username = "jeroen";
   home.homeDirectory = "/home/jeroen";
   home.stateVersion = "25.11";
@@ -37,62 +41,62 @@
     };
   };
 
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-    settings = {
-      add_newline = true;
-  
-      format = lib.concatStrings [
-        "$directory"
-        "$git_branch"
-        "$git_status"
-        "$rust"
-        "$c"
-        "$golang"
-        "$python"
-        "$lua"
-        "$java"
-        "$maven"
-        "$docker_context"
-        "$nix_shell"
-        "$line_break"
-        "$character"
-      ];
-
-  
-      directory = {
-        truncation_length = 3;
-        truncate_to_repo = true;
-      };
-  
-      git_branch = {
-        symbol = " ";
-        format = "[$symbol$branch]($style) ";
-      };
-      git_status = {
-        format = "([$all_status$ahead_behind]($style) )";
-        ahead = "⇡\${count}";
-        behind = "⇣\${count}";
-        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-        staged = "+\${count}";
-        modified = "!\${count}";
-        untracked = "?\${count}";
-        deleted = "✘\${count}";
-      };
-  
-  
-      nix_shell = {
-        symbol = " ";
-        format = "[$symbol$state]($style) ";
-      };
-  
-      character = {
-        success_symbol = "[❯](bold green)";
-        error_symbol = "[❯](bold red)";
-      };
-    };
-  };
+#  programs.starship = {
+#    enable = true;
+#    enableBashIntegration = true;
+#    settings = {
+#      add_newline = true;
+#  
+#      format = lib.concatStrings [
+#        "$directory"
+#        "$git_branch"
+#        "$git_status"
+#        "$rust"
+#        "$c"
+#        "$golang"
+#        "$python"
+#        "$lua"
+#        "$java"
+#        "$maven"
+#        "$docker_context"
+#        "$nix_shell"
+#        "$line_break"
+#        "$character"
+#      ];
+#
+#  
+#      directory = {
+#        truncation_length = 3;
+#        truncate_to_repo = true;
+#      };
+#  
+#      git_branch = {
+#        symbol = " ";
+#        format = "[$symbol$branch]($style) ";
+#      };
+#      git_status = {
+#        format = "([$all_status$ahead_behind]($style) )";
+#        ahead = "⇡\${count}";
+#        behind = "⇣\${count}";
+#        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+#        staged = "+\${count}";
+#        modified = "!\${count}";
+#        untracked = "?\${count}";
+#        deleted = "✘\${count}";
+#      };
+#  
+#  
+#      nix_shell = {
+#        symbol = " ";
+#        format = "[$symbol$state]($style) ";
+#      };
+#  
+#      character = {
+#        success_symbol = "[❯](bold green)";
+#        error_symbol = "[❯](bold red)";
+#      };
+#    };
+#  };
 
   programs.git = {
     enable = true;
@@ -100,6 +104,11 @@
     settings.user.email = "jeroen.vanrenterghem@student.hogent.be";
     settings = {
       init.defaultBranch = "main";
+      core.ignorecase = "false";
+      rebase.autoStash = "true";
+      pull.rebase = "true";
+      core.autocrlf = "true";
+      push.default = "simple";
     };
   };
 

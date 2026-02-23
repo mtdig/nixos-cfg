@@ -89,6 +89,11 @@
     terraform
     ibmcloud-cli
 
+    # win
+    remmina
+    freerdp
+    powershell
+
     # exoticness
     (pkgs.callPackage ./pkgs/visual-paradigm.nix {})
     (pkgs.callPackage ./pkgs/packet-tracer.nix {})
