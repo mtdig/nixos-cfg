@@ -107,7 +107,8 @@
       core.ignorecase = "false";
       rebase.autoStash = "true";
       pull.rebase = "true";
-      core.autocrlf = "true";
+      # windows only
+      # core.autocrlf = "true";
       push.default = "simple";
     };
   };
