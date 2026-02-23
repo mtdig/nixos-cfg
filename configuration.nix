@@ -81,14 +81,28 @@
   users.users.jeroen = {
     isNormalUser = true;
     description = "jeroen";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker" "libvirtd" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
     ];
   };
   virtualisation.docker.enable = true;
- 
+
+  # QEMU/KVM
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      # now enabled by default
+      # ovmf.enable = true;
+      # ovmf.packages = [ pkgs.OVMFFull.fd ];
+      swtpm.enable = true;
+    };
+  };
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   virtualisation.virtualbox.host = {
     enable = true;
     package = pkgs-virtualbox-726.virtualbox;

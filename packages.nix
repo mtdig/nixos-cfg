@@ -87,6 +87,11 @@
     terraform
     ibmcloud-cli
 
+    # virtualisation
+    virt-viewer
+    spice-gtk
+    virtio-win
+
     # win
     remmina
     freerdp
