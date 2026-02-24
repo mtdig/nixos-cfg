@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #
-# NixOS Configuration First-Time Installation Script
-# Clones the configuration repo and applies the NixOS + Home Manager setup
+# NixOS Configuration Installation Script
+# Applies the NixOS + Home Manager setup from /etc/nixos
+# See README.md for setup steps before running this script
 #
 
 set -euo pipefail
 
 # Configuration
-REPO_URL="https://github.com/mtdig/nixos-cfg.git"
 NIXOS_DIR="/etc/nixos"
 HOME_MANAGER_DIR="${HOME}/.config/home-manager"
 
@@ -40,10 +40,6 @@ check_prerequisites() {
         die "Do not run this script as root. Run as a normal user with sudo privileges."
     fi
 
-    if ! command -v git &> /dev/null; then
-        die "git is not installed. Run: nix-shell -p git"
-    fi
-
     if ! command -v nixos-rebuild &> /dev/null; then
         die "nixos-rebuild not found. Are you running this on NixOS?"
     fi
@@ -51,32 +47,17 @@ check_prerequisites() {
     if ! sudo -v &> /dev/null; then
         die "Cannot obtain sudo privileges."
     fi
-}
 
-# Backup existing configuration
-backup_existing() {
-    if [[ -d "${NIXOS_DIR}" ]] && [[ "$(ls -A ${NIXOS_DIR})" ]]; then
-        local backup_dir="${NIXOS_DIR}.backup.$(date +%Y%m%d_%H%M%S)"
-        log_warn "Existing configuration found. Backing up to ${backup_dir}"
-        sudo cp -r "${NIXOS_DIR}" "${backup_dir}"
+    if [[ ! -d "${NIXOS_DIR}/.git" ]]; then
+        die "${NIXOS_DIR} is not a git repository. See README.md for setup instructions."
     fi
 }
 
-# Clone the repository
-clone_repo() {
-    log_info "Cleaning up existing .nix files..."
-    sudo rm -f "${NIXOS_DIR}"/*.nix
-
-    if [[ -d "${NIXOS_DIR}/.git" ]]; then
-        log_info "Git repo already exists, pulling latest changes..."
-        cd "${NIXOS_DIR}"
-        sudo git pull --ff-only || die "Failed to pull latest changes"
-    else
-        log_info "Cloning configuration repository..."
-        # Remove everything except hardware-configuration.nix if it's a fresh install
-        sudo rm -rf "${NIXOS_DIR}"
-        sudo git clone "${REPO_URL}" "${NIXOS_DIR}" || die "Failed to clone repository"
-    fi
+# Regenerate hardware configuration
+regen_hardware_config() {
+    log_info "Regenerating hardware-configuration.nix..."
+    sudo nixos-generate-config --show-hardware-config > "${NIXOS_DIR}/hardware-configuration.nix" \
+        || die "Failed to regenerate hardware configuration"
 }
 
 # Setup home-manager symlink
@@ -122,8 +103,7 @@ main() {
     log_info "Starting installation..."
 
     check_prerequisites
-    backup_existing
-    clone_repo
+    regen_hardware_config
     setup_home_manager
     apply_nixos
     finalize
