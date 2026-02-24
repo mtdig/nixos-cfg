@@ -368,9 +368,11 @@
           symbol = "";
         };
         nix_shell = {
-          format = "[ $symbol]($style)";
-          style = "fg:base bg:teal";
+          format = "[ $symbol $state( \\($name\\))]($style)";
+          style = "bold fg:base bg:teal";
           symbol = "󱄅";
+          impure_msg = "impure";
+          pure_msg = "pure";
         };
         cmd_duration = {
           format = "[  $duration]($style)";

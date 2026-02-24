@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -41,6 +46,7 @@
       flup = "sudo nix flake update --flake /etc/nixos";
       nxs = "nix search nixpkgs ";
       flist = "nix-store -q --references /run/current-system/sw | sed 's/\\/nix\\/store\\/[a-z0-9]*-//' | sort";
+      nxp = "nix-shell -p ";
 
     };
   };
