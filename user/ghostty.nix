@@ -15,7 +15,7 @@
     keybind = ctrl+h=goto_split:left
     keybind = ctrl+j=goto_split:bottom
     keybind = ctrl+k=goto_split:top
-    keybind = ctrl+l=goto_split:right
+    keybind = ctrl+l=unbind
     
     keybind = ctrl+a>h=new_split:left
     keybind = ctrl+a>j=new_split:down
