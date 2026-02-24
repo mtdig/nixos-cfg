@@ -38,6 +38,16 @@ nix-shell -p git
 
 5. **Log out and back in** for all changes to take effect.
 
+### What the Script Does
+
+The `first-install.sh` script performs the following steps:
+
+1. **Validates prerequisites** — Checks that you're running as a normal user with sudo privileges on NixOS, and that `/etc/nixos` is a git repository
+2. **Regenerates hardware configuration** — Runs `nixos-generate-config` to create a fresh `hardware-configuration.nix` matching your current hardware
+3. **Sets up Home Manager** — Creates the `~/.config/home-manager/` directory and symlinks `home.nix` into it
+4. **Applies NixOS configuration** — Runs `nixos-rebuild switch` with the flake for your hostname
+5. **Applies Home Manager configuration** — Runs `home-manager switch` with the flake for your user
+
 ## Config
 
 - [x] reproducible automated builds, every time
