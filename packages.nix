@@ -3,122 +3,113 @@
 {
   environment.systemPackages = with pkgs; [
     # dev
+    clang
+    cmake
     file
     gcc
-    clang
+    gnumake
     go
+    jdk21
+    just
+    maven
     ninja
     rustup
-    zig
-    gnumake
-    cmake
-    just
-    jdk21
-    maven
     xxd
-
+    zig
 
     # cli tools
     bat
-    fastfetch
     curl
-    git
-    wget
-    jq
-    xq
-    uv
-    ruff
-    glow
-    gitui
+    fastfetch
     fzf
+    git
     git-cliff
+    gitui
+    glow
+    jq
+    navi
+    ncdu
+    ripgrep
+    ruff
     starship
     tree
-    ncdu
-    navi
-    ripgrep
     unzip
-    zip
+    uv
+    wget
     wp-cli
-
-
+    xq
+    zip
 
     # productivity
-    wl-clipboard
-    google-chrome
-    ghostty
-    home-manager
-    duckdb
-    thunderbird
-    jetbrains.idea
-    vlc
-    gimp
-    discord
-    mysql-workbench
     dbeaver-bin
-    slack
-    scenebuilder
-    rpi-imager
-    obs-studio
+    discord
+    duckdb
+    ghostty
+    gimp
+    google-chrome
+    home-manager
+    jetbrains.idea
     kicad
-
-
+    mysql-workbench
+    obs-studio
+    rpi-imager
+    scenebuilder
+    slack
+    thunderbird
+    vlc
+    wl-clipboard
 
     # perf
-    gdb
-    stress-ng
     btop
-    htop
+    gdb
     glances
+    htop
+    stress-ng
 
     # hw / sys
-    usbutils
-    pciutils
-    rsync
     lsof
-    util-linux
+    pciutils
     procps
-
+    rsync
+    usbutils
+    util-linux
 
     # network
-    tcpdump
-    inetutils
     dig
-    nmap
-    nettools
+    inetutils
     iproute2
-
+    nettools
+    nmap
+    tcpdump
 
     # cloud
-    kubectl
-    helm
     ansible
     awscli2
-    terraform
+    helm
     ibmcloud-cli
+    kubectl
+    terraform
 
     # virtualisation
-    virt-viewer
     spice-gtk
+    virt-viewer
     virtio-win
 
     # win
-    remmina
     freerdp
     powershell
+    remmina
 
     # exoticness
-    (pkgs.callPackage ./pkgs/visual-paradigm.nix {})
-    (pkgs.callPackage ./pkgs/packet-tracer.nix {})
+    (pkgs.callPackage ./pkgs/visual-paradigm.nix { })
+    (pkgs.callPackage ./pkgs/packet-tracer.nix { })
 
     # 3d printing
-    (pkgs.callPackage ./pkgs/bambu-studio-appimage.nix {})
+    (pkgs.callPackage ./pkgs/bambu-studio-appimage.nix { })
     openscad-unstable
 
     # user
     nerd-fonts.jetbrains-mono
-
-
 
   ];
 }
