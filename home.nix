@@ -35,14 +35,14 @@
     '';
     shellAliases = {
       hconf = "nvim /home/jeroen/.config/home-manager/home.nix";
-      gconf = "sudo nvim /etc/nixos/configuration.nix";
-      gpac = "sudo nvim /etc/nixos/packages.nix";
+      gconf = "sudo -E nvim /etc/nixos/configuration.nix";
+      gpac = "sudo -E nvim /etc/nixos/packages.nix";
       hswitch = "home-manager switch --flake /etc/nixos#\${USER}";
       gswitch = "sudo nixos-rebuild switch --flake /etc/nixos#\$(hostname)";
-      sudo = "sudo ";
+      sudo = "sudo -E ";
       vi = "nvim ";
       gnpch = "get-nix-pkg-commit-hash ";
-      flake = "sudo nvim /etc/nixos/flake.nix";
+      flake = "sudo -E nvim /etc/nixos/flake.nix";
       flup = "sudo nix flake update --flake /etc/nixos";
       nxs = "nix search nixpkgs ";
       flist = "nix-store -q --references /run/current-system/sw | sed 's/\\/nix\\/store\\/[a-z0-9]*-//' | sort";
