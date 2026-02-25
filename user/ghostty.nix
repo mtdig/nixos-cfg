@@ -12,6 +12,9 @@
     
     keybind = ctrl+n=new_window
     
+    keybind = ctrl+shift+c=copy_to_clipboard
+    keybind = ctrl+shift+v=paste_from_clipboard
+    
     keybind = ctrl+h=goto_split:left
     keybind = ctrl+j=goto_split:bottom
     keybind = ctrl+k=goto_split:top

@@ -211,7 +211,9 @@
           clangd.enable = true;
 
           # java
-          java_language_server.enable = true;
+          jdtls = {
+            enable = true;
+          };
 
           # docker
           dockerls.enable = true;
