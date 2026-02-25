@@ -12,6 +12,7 @@
     ./user/git.nix
     ./user/ghostty.nix
     ./user/vscode.nix
+    ./user/kde-shortcuts.nix
   ];
 
   home.username = "jeroen";
