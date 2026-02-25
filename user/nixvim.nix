@@ -29,6 +29,7 @@
       undofile = true;
       ignorecase = true;
       smartcase = true;
+      guicursor = "";
     };
 
     globals = {

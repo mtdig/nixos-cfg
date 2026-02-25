@@ -18,6 +18,10 @@
   home.homeDirectory = "/home/jeroen";
   home.stateVersion = "25.11";
 
+  home.sessionVariables = {
+    VBOX_PROGRAM_PATH = "/run/wrappers/bin";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   programs.bash = {

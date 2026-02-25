@@ -51,6 +51,7 @@
   console.keyMap = "be-latin1";
   environment.variables.XKB_DEFAULT_LAYOUT = "be";
   environment.variables.GTK_IM_MODULE = "simple";
+  environment.variables.VBOX_PROGRAM_PATH = "/run/wrappers/bin";
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -89,23 +90,12 @@
   };
   virtualisation.docker.enable = true;
 
-  # QEMU/KVM
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      # now enabled by default
-      # ovmf.enable = true;
-      # ovmf.packages = [ pkgs.OVMFFull.fd ];
-      swtpm.enable = true;
-    };
-  };
-  programs.virt-manager.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-
   virtualisation.virtualbox.host = {
     enable = true;
     package = pkgs-virtualbox-726.virtualbox;
+    enableExtensionPack = false;
+    addNetworkInterface = false;
+    enableHardening = true;
   };
 
   # Install firefox.
