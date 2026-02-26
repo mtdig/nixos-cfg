@@ -37,6 +37,10 @@
       bind '"\e[B": history-search-forward'
       PROMPT_COMMAND="history -a; history -n; ''${PROMPT_COMMAND}"
       export PATH="/home/jeroen/local/bin:$PATH";
+      nx() {
+        nix-shell -p "$1" --run "''${2:-$1}"
+      }
+
     '';
     shellAliases = {
       hconf = "nvim /home/jeroen/.config/home-manager/home.nix";
