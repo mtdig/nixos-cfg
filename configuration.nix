@@ -2,15 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-virtualbox-726, ... }:
+{
+  config,
+  pkgs,
+  pkgs-virtualbox-726,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./packages.nix
-      ./user/rust.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./packages.nix
+    ./user/rust.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,9 +61,9 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      gutenprint        # generic drivers for many printers
-      gutenprintBin     # proprietary drivers for some Canon/Epson
-      hplip             # HP printers
+      gutenprint # generic drivers for many printers
+      gutenprintBin # proprietary drivers for some Canon/Epson
+      hplip # HP printers
     ];
   };
 
@@ -96,10 +101,17 @@
   users.users.jeroen = {
     isNormalUser = true;
     description = "jeroen";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" "docker" "libvirtd" "dialout" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "vboxusers"
+      "docker"
+      "libvirtd"
+      "dialout"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
   virtualisation.docker.enable = true;
@@ -172,6 +184,9 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
 }

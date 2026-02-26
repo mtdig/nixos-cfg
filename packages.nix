@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-dust-121, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     # dev
     clang
-    clang-tools    # clangd, clang-format, clang-tidy
+    clang-tools # clangd, clang-format, clang-tidy
     cmake
     cmake-format
     file
@@ -13,12 +13,12 @@
     go
     jdk21
     just
-    lldb           # LLVM debugger
+    lldb # LLVM debugger
     maven
     ninja
     rustup
     universal-ctags
-    bear           # compile_commands.json generator
+    bear # compile_commands.json generator
     xxd
     zig
 
@@ -96,16 +96,16 @@
     # cloud
     ansible
     awscli2
-    azure-cli        # az
+    azure-cli # az
     google-cloud-sdk # gcloud
     helm
     ibmcloud-cli
     kubectl
-    kubelogin        # azure aks authentication
-    kubectx          # kubectx / kubens
-    k9s              # kubernetes TUI
+    kubelogin # azure aks authentication
+    kubectx # kubectx / kubens
+    k9s # kubernetes TUI
     terraform
-    terragrunt       # terraform wrapper
+    terragrunt # terraform wrapper
 
     # virtualisation
     spice-gtk
@@ -127,6 +127,9 @@
 
     # user
     nerd-fonts.jetbrains-mono
+
+    # pinned
+    #pkgs-dust-121.dust
 
   ];
 }
