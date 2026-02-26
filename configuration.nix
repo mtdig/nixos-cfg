@@ -53,7 +53,21 @@
   environment.variables.GTK_IM_MODULE = "simple";
   environment.variables.VBOX_PROGRAM_PATH = "/run/wrappers/bin";
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint        # generic drivers for many printers
+      gutenprintBin     # proprietary drivers for some Canon/Epson
+      hplip             # HP printers
+    ];
+  };
+
+  # Printer/scanner discovery over the network (mDNS/Bonjour)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable Bluetooth
   hardware.bluetooth.enable = true;

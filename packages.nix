@@ -20,6 +20,7 @@
     # cli tools
     bat
     curl
+    pandoc
     fastfetch
     fzf
     git
@@ -29,6 +30,7 @@
     jq
     navi
     ncdu
+    nitch
     ripgrep
     ruff
     starship
