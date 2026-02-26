@@ -56,6 +56,9 @@
       nxs = "nix search nixpkgs ";
       flist = "nix-store -q --references /run/current-system/sw | sed 's/\\/nix\\/store\\/[a-z0-9]*-//' | sort";
       nxp = "nix-shell -p ";
+      gp = "git push ";
+      ga = "git add .";
+      gc = "git commit -am ";
 
     };
   };
