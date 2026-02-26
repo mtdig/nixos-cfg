@@ -4,16 +4,21 @@
   environment.systemPackages = with pkgs; [
     # dev
     clang
+    clang-tools    # clangd, clang-format, clang-tidy
     cmake
+    cmake-format
     file
     gcc
     gnumake
     go
     jdk21
     just
+    lldb           # LLVM debugger
     maven
     ninja
     rustup
+    universal-ctags
+    bear           # compile_commands.json generator
     xxd
     zig
 
@@ -64,6 +69,10 @@
     # perf
     btop
     gdb
+    gf
+    heaptrack
+    linuxPackages.perf
+    valgrind
     glances
     htop
     stress-ng
@@ -87,10 +96,16 @@
     # cloud
     ansible
     awscli2
+    azure-cli        # az
+    google-cloud-sdk # gcloud
     helm
     ibmcloud-cli
     kubectl
+    kubelogin        # azure aks authentication
+    kubectx          # kubectx / kubens
+    k9s              # kubernetes TUI
     terraform
+    terragrunt       # terraform wrapper
 
     # virtualisation
     spice-gtk
