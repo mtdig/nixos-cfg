@@ -1,4 +1,4 @@
-{ pkgs, pkgs-dust-121, ... }:
+{ pkgs, pkgs-duckdb-144, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -16,6 +16,8 @@
     lldb # LLVM debugger
     maven
     ninja
+    python313
+    python313Packages.virtualenv
     rustup
     universal-ctags
     bear # compile_commands.json generator
@@ -36,6 +38,7 @@
     navi
     ncdu
     nitch
+    rage
     ripgrep
     ruff
     starship
@@ -50,7 +53,7 @@
     # productivity
     dbeaver-bin
     discord
-    duckdb
+    pkgs-duckdb-144.duckdb
     ghostty
     gimp
     google-chrome
@@ -127,9 +130,6 @@
 
     # user
     nerd-fonts.jetbrains-mono
-
-    # pinned
-    #pkgs-dust-121.dust
 
   ];
 }
